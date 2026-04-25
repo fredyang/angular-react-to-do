@@ -4,10 +4,16 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@angular-devkit/core": "~21.2.0",
+    "@nx/angular": "^22.7.0",
     "@nx/js": "22.7.0",
+    "@nx/react": "^22.7.0",
     "@nx/workspace": "22.7.0",
     "nx": "22.7.0"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
