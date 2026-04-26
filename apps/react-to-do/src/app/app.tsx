@@ -1,10 +1,16 @@
-import NxWelcome from './nx-welcome';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { TodoApp } from './TodoApp';
+
+const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="react-to-do" />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 flex flex-col items-center justify-center">
+        <TodoApp />
+      </main>
+    </QueryClientProvider>
   );
 }
 
