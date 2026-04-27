@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { TodoService } from './TodoService';
-import { TodoListComponent } from './TodoList';
-import { TodoFormComponent } from './TodoForm';
+import { TodoService } from '../TodoService';
+import { TodoListComponent } from '../TodoList';
+import { TodoFormComponent } from '../TodoForm';
 
 @Component({
   imports: [TodoListComponent, TodoFormComponent],
@@ -15,8 +15,8 @@ import { TodoFormComponent } from './TodoForm';
       } @else {
         <app-todo-list
           [todos]="query.data() ?? []"
-          (toggle)="toggleTodo($event)"
-          (delete)="deleteTodo($event)"
+          (toggleTodo)="toggleTodo($event)"
+          (deleteTodo)="deleteTodo($event)"
         ></app-todo-list>
       }
     </div>

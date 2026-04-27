@@ -23,7 +23,7 @@ export class TodoService {
     }));
   }
 
-  private add = injectMutation(() => ({
+  private addMutate = injectMutation(() => ({
     mutationFn: (todo: Todo) => lastValueFrom(this.http.post<Todo>('/api/todos', todo)),
     onSuccess: () => {
       this.queryClient.invalidateQueries({ queryKey: ['todos'] });
@@ -31,10 +31,10 @@ export class TodoService {
   }));
 
   addTodo = (text: string) => {
-    return this.add.mutate({ text } as Todo);
+    return this.addMutate.mutate({ text } as Todo);
   };
 
-  private toggle = injectMutation(() => ({
+  private toggleMutate = injectMutation(() => ({
     mutationFn: (id: string) => lastValueFrom(this.http.patch<Todo>(`/api/todos/${id}`, {})),
     onSuccess: () => {
       this.queryClient.invalidateQueries({ queryKey: ['todos'] });
@@ -42,10 +42,10 @@ export class TodoService {
   }));
 
   toggleTodo = (id: string) => {
-    return this.toggle.mutate(id);
+    return this.toggleMutate.mutate(id);
   };
 
-  private delete = injectMutation(() => ({
+  private deleteMutate = injectMutation(() => ({
     mutationFn: (id: string) => lastValueFrom(this.http.delete<Todo>(`/api/todos/${id}`)),
     onSuccess: () => {
       this.queryClient.invalidateQueries({ queryKey: ['todos'] });
@@ -53,6 +53,6 @@ export class TodoService {
   }));
 
   deleteTodo = (id: string) => {
-    return this.delete.mutate(id);
+    return this.deleteMutate.mutate(id);
   };
 }

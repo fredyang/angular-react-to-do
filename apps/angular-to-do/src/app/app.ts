@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TodoApp } from './ TodoApp';
+import { TodoApp } from './todo/ TodoApp';
 
 @Component({
   imports: [RouterModule, TodoApp],

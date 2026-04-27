@@ -20,14 +20,14 @@ export interface Todo {
             [class.text-gray-900]="!todo.completed"
             tabindex="0"
             role="button"
-            (click)="toggle.emit(todo.id)"
-            (keyup.enter)="toggle.emit(todo.id)"
+            (click)="toggleTodo.emit(todo.id)"
+            (keyup.enter)="toggleTodo.emit(todo.id)"
           >
             {{ todo.text }}
           </span>
           <button
             class="ml-4 text-red-500 hover:text-red-700"
-            (click)="delete.emit(todo.id)"
+            (click)="deleteTodo.emit(todo.id)"
             aria-label="Delete"
           >
             &times;
@@ -39,7 +39,6 @@ export interface Todo {
 })
 export class TodoListComponent {
   todos = input.required<Todo[]>();
-  // eslint-disable-next-line @angular-eslint/no-output-native
-  toggle = output<string>();
-  delete = output<string>();
+  toggleTodo = output<string>();
+  deleteTodo = output<string>();
 }
