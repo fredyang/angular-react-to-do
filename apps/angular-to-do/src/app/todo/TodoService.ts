@@ -14,45 +14,32 @@ export class TodoService {
   private http = inject(HttpClient);
   private queryClient = inject(QueryClient);
 
-  getTodos() {
-    return injectQuery(() => ({
-      queryKey: ['todos'],
-      queryFn: () => {
-        return lastValueFrom(this.http.get<Todo[]>('/api/todos'));
-      },
-    }));
-  }
-
-  private addMutate = injectMutation(() => ({
-    mutationFn: (todo: Todo) => lastValueFrom(this.http.post<Todo>('/api/todos', todo)),
-    onSuccess: () => {
-      this.queryClient.invalidateQueries({ queryKey: ['todos'] });
+  todos = injectQuery(() => ({
+    queryKey: ['todos'],
+    queryFn: () => {
+      return lastValueFrom(this.http.get<Todo[]>('/api/todos'));
     },
   }));
 
-  addTodo = (text: string) => {
-    return this.addMutate.mutate({ text } as Todo);
-  };
+  addTodo = injectMutation(() => ({
+    mutationFn: (text: string) =>
+      lastValueFrom(this.http.post<Todo>('/api/todos', { text } as Todo)),
+    onSuccess: () => {
+      this.queryClient.invalidateQueries({ queryKey: ['todos'] });
+    },
+  })).mutate;
 
-  private toggleMutate = injectMutation(() => ({
+  toggleTodo = injectMutation(() => ({
     mutationFn: (id: string) => lastValueFrom(this.http.patch<Todo>(`/api/todos/${id}`, {})),
     onSuccess: () => {
       this.queryClient.invalidateQueries({ queryKey: ['todos'] });
     },
-  }));
+  })).mutate;
 
-  toggleTodo = (id: string) => {
-    return this.toggleMutate.mutate(id);
-  };
-
-  private deleteMutate = injectMutation(() => ({
+  deleteTodo = injectMutation(() => ({
     mutationFn: (id: string) => lastValueFrom(this.http.delete<Todo>(`/api/todos/${id}`)),
     onSuccess: () => {
       this.queryClient.invalidateQueries({ queryKey: ['todos'] });
     },
-  }));
-
-  deleteTodo = (id: string) => {
-    return this.deleteMutate.mutate(id);
-  };
+  })).mutate;
 }
