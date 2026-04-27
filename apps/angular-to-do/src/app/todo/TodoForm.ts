@@ -1,10 +1,11 @@
-import { Component, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-form',
   imports: [FormsModule],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form (ngSubmit)="handleSubmit()" class="flex gap-2 mt-6">
       <input

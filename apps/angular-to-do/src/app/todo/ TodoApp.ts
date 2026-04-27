@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TodoService } from './TodoService';
 import { TodoListComponent } from './TodoList';
 import { TodoFormComponent } from './TodoForm';
@@ -6,6 +6,7 @@ import { TodoFormComponent } from './TodoForm';
 @Component({
   imports: [TodoListComponent, TodoFormComponent],
   selector: 'app-todo-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="max-w-xl mx-auto mt-12 p-6 bg-white rounded shadow-lg">
       <h2 class="text-3xl font-bold mb-6 text-blue-700">To-Do List</h2>

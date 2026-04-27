@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 export interface Todo {
   id: string;
@@ -9,6 +9,7 @@ export interface Todo {
 @Component({
   selector: 'app-todo-list',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="space-y-2">
       @for (todo of todos(); track todo.id) {
