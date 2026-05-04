@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { TodoApp } from './todo/ TodoApp';
 
 @Component({
-  imports: [RouterModule, TodoApp],
+  imports: [TodoApp],
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
