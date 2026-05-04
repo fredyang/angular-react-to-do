@@ -8,9 +8,14 @@
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/apps/angular-to-do",
+        "outputPath": {
+          "base": "dist/angular-to-do",
+          "browser": ""
+        },
         "browser": "apps/angular-to-do/src/main.ts",
         "tsConfig": "apps/angular-to-do/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
@@ -20,7 +25,9 @@
             "input": "apps/angular-to-do/public"
           }
         ],
-        "styles": ["apps/angular-to-do/src/styles.scss"]
+        "styles": [
+          "apps/angular-to-do/src/styles.scss"
+        ]
       },
       "configurations": {
         "production": {
@@ -67,7 +74,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "angular-to-do:build",
-        "staticFilePath": "dist/apps/angular-to-do/browser",
+        "staticFilePath": "dist/angular-to-do/browser",
         "spa": true
       }
     }
