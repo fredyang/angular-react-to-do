@@ -4,7 +4,10 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(() => {
+  const base = process.env.NX_VITE_BASE_URL ?? '/';
+
   return {
+    base,
     root: import.meta.dirname,
     cacheDir: '../../node_modules/.vite/apps/react-to-do',
     server: {
