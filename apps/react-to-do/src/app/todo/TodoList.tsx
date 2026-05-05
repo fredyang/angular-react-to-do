@@ -1,8 +1,4 @@
-export interface Todo {
-  id: string;
-  text: string;
-  completed: boolean;
-}
+import { Todo } from './useTodosApi';
 
 export interface TodoListProps {
   todos: Todo[];
@@ -14,10 +10,7 @@ export function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
   return (
     <ul className="space-y-2">
       {todos.map((todo) => (
-        <li
-          key={todo.id}
-          className="flex items-center justify-between bg-white rounded shadow p-3"
-        >
+        <li key={todo.id} className="flex items-center justify-between bg-white rounded shadow p-3">
           <span
             className={
               'flex-1 text-lg cursor-pointer select-none ' +

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-todo-form',
   imports: [FormsModule],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form (ngSubmit)="handleSubmit()" class="flex gap-2 mt-6">
@@ -26,14 +25,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodoFormComponent {
   text = signal('');
-  add = output<string>();
+  added = output<string>();
 
   handleSubmit() {
     const value = this.text().trim();
     if (value) {
-      this.add.emit(value);
+      this.added.emit(value);
       this.text.set('');
     }
-    return false;
   }
 }

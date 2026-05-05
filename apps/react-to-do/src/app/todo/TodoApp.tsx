@@ -7,8 +7,8 @@ export function TodoApp() {
 
   return (
     <div className="max-w-xl mx-auto mt-12 p-6 bg-white rounded shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 text-blue-700">To-Do List</h2>
-      <TodoForm onAdd={addTodo} />
+      <h2 className="text-3xl font-bold mb-6 text-blue-700">React To-Do List</h2>
+      <TodoForm added={addTodo} />
       {isLoading ? (
         <div className="text-gray-500 mt-6">Loading...</div>
       ) : (

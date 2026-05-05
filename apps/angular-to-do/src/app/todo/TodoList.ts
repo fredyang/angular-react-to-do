@@ -1,14 +1,8 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-
-export interface Todo {
-  id: string;
-  text: string;
-  completed: boolean;
-}
+import { Todo } from './TodoService';
 
 @Component({
   selector: 'app-todo-list',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="space-y-2">
