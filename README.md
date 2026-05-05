@@ -5,10 +5,8 @@
 This workspace uses pnpm as the package manager. You can install it globally using npm:
 
 ```bash
-# install pnpm
-corepack enable
-
 # pnpm install
+corepack enable
 
 # run angular app
 pnpm nx serve angular-to-do
